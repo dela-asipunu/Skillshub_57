@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'skillMatching',
     'learning',
     'notification',
-
+    'courses',
 
     #third party apps
     'rest_framework',
@@ -104,11 +104,11 @@ AUTH_USER_MODEL= 'userauth.User'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
+        'NAME': 'skillshub_db',
+        'USER': 'postgres',
+        'PASSWORD': 'Firemalt1@postgres',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -154,3 +154,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
