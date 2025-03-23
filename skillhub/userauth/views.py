@@ -1,6 +1,7 @@
 from rest_framework import generics, permissions
 from rest_framework_simplejwt.views import TokenObtainPairView
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, logout
+from django.shortcuts import redirect
 from .models import Skill, UserSkill
 from .serializers import UserCreateSerializer, UserSerializer, SkillSerializer, UserSkillSerializer
 
@@ -18,3 +19,7 @@ class ProfileView(generics.RetrieveUpdateAPIView):
 
     def get_object(self):
         return self.request.user
+
+def logout_view(request):
+    logout(request)
+    return redirect('login')
