@@ -1,0 +1,156 @@
+/* Sign-up Section */
+.sign-up {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    gap: 50px;
+    background-color: #f5f5f5;
+    padding: 20px;
+  }
+  
+  /* Image Section */
+  .image-section img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+  
+  /* Info Section */
+  .info-section {
+    width: 100%;
+    max-width: 500px;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Form Styling */
+  .form1 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Make major divs full width */
+  .div-1, .div-2, .div-3, .div-4 {
+    width: 100%;
+  }
+  
+  /* First & Last Name - Flex Row */
+  .div-1 {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+  }
+  
+  /* Ensure first and last name inputs take equal space */
+  .div-1 div {
+    width: 50%;
+  }
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    resize: vertical; /* Allows resizing only vertically */
+    background-color: white;
+    color: black;
+  }
+  
+  /* Add focus effect */
+  textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
+  /* Form input container */
+  .div-5 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+  }
+  
+  /* Input Styling */
+  input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    background-color: white;
+    font-size: 16px;
+  }
+  
+  /* Interest section container */
+.interest {
+  width: 100%;
+  margin-top: 20px;
+  text-align: center;
+  max-width: 600px;
+}
+
+/* Style for the interest options */
+.interest-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* Styling the labels to look more like buttons */
+.interest-options label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f8f9fa;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+/* Hide the default checkbox */
+.interest-options input[type="checkbox"] {
+  display: none;
+}
+
+/* Custom checkbox effect */
+.interest-options input[type="checkbox"]:checked + span {
+  font-weight: bold;
+  color: #ffffff;
+  border: 10px;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.1);
+  background-color: rgb(60, 60, 238);
+  padding: 5px;
+  border-radius: 8px;
+
+}
+
+  
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .sign-up {
+      flex-direction: column;
+    }
+  
+    .div-1 {
+      flex-direction: column;
+    }
+  
+    .div-1 div {
+      width: 100%;
+    }
+  }
+
+
+  
