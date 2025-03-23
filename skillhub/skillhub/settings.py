@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'skillMatching',
     'learning',
     'notification',
+    'course',
 
 
     #third party apps
@@ -57,6 +58,8 @@ INSTALLED_APPS = [
 REST_FRAMEWORK={
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
@@ -104,11 +107,11 @@ AUTH_USER_MODEL= 'userauth.User'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
+        'NAME': os.getenv('POSTGRESQL_DB_NAME', 'skillshub'),
+        'USER': os.getenv('POSTGRESQL_USER', 'brown'),
+        'PASSWORD': os.getenv('POSTGRESQL_PASSWORD', 'brownanning'),
+        'HOST': os.getenv('POSTGRESQL_HOST', 'localhost'),
+        'PORT': os.getenv('POSTGRESQL_PORT', '5432'),
     }
 }
 
@@ -154,3 +157,18 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # Frontend development server
+    "http://127.0.0.1:5173",  # Alternate localhost address
+]
+CORS_ALLOWED_ORIGIN_REGEXES = [
+    r"^http://localhost:\d+$",  # Allows localhost on any port
+    r"^http://127.0.0.1:\d+$",
+]
+
+# For testing purposes only
+CORS_ALLOW_ALL_ORIGINS = True
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
