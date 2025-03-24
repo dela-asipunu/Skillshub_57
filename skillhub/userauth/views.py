@@ -1,7 +1,7 @@
 from rest_framework import generics, permissions
 from rest_framework_simplejwt.views import TokenObtainPairView
 from django.contrib.auth import get_user_model, logout
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from .models import Skill, UserSkill
 from .serializers import UserCreateSerializer, UserSerializer, SkillSerializer, UserSkillSerializer
 
@@ -21,5 +21,9 @@ class ProfileView(generics.RetrieveUpdateAPIView):
         return self.request.user
 
 def logout_view(request):
-    logout(request)
-    return redirect('login')
+    def logout_view(request):
+        if request.method == "POST":
+            logout(request)
+            return redirect('login')
+
+    return render(request, 'userauth/base.html')
