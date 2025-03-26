@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^1.8.3",
     "boostrap": "^2.0.0",
+    "framer-motion": "^12.6.0",
     "lucide-react": "^0.479.0",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.9",

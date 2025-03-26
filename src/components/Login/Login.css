@@ -13,10 +13,9 @@
   background: white;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 950px;
-  max-width: 90%; /* Ensures it adjusts on smaller screens */
+  max-width: 100%; /* Ensures it adjusts on smaller screens */
+  width: 70%;
 }
 
 /* Flexbox for illustration and form */
@@ -39,14 +38,18 @@ form {
   flex-direction: column;
   width: 50%;
 }
+.container1 h1{
+  color: #007bff;
+  font-size: 2rem;
+}
 
 /* Input fields */
-input {
-  width: 100%;
+.content input {
+  max-width: 70%;
   padding: 15px;
   margin: 12px 0;
   border: 1px solid #ccc;
-  border-radius: 20px;
+  border-radius: 25px;
   outline: none;
   background-color: white;
   color: black;
@@ -63,6 +66,7 @@ input::placeholder {
 
 /* Button */
 .content button {
+  max-width: 70%;
   padding: 14px;
   margin-top: 10px;
   border: none;
@@ -106,6 +110,10 @@ p span {
 
 p span:hover {
   text-decoration: underline;
+}
+
+hr{
+  margin-top: 32px;
 }
 
 

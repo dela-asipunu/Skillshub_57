@@ -1,6 +1,6 @@
 .container {
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
 }
 
@@ -10,6 +10,7 @@
   color: white;
   overflow: hidden;
   transition: width 0.3s;
+  
 }
 
 .sidebar-closed {
@@ -22,11 +23,11 @@
   padding: 20px;
 }
 
-.logo-placeholder {
-  width: 40px;
-  height: 40px;
-  background-color: white;
-  border-radius: 50%;
+.logo-text {
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  font-weight: bolder;
+  font-size: 1.7rem;
 }
 
 .nav {
@@ -52,7 +53,7 @@
 
 .main-content {
   flex-grow: 1;
-  background-color: #ecf0f1;
+  background-color: #ffffff;
   padding: 20px;
   display: flex;
   flex-direction: column;

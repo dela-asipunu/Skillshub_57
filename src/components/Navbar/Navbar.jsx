@@ -1,8 +1,11 @@
 import logo from "../../assets/logo.png"
 import { NavLink, useParams, useNavigate } from "react-router";
 import "./Navbar.css"
+import { useContext } from "react";
+import { SearchContext } from "../../Context/StoredContext";
 
 const Navbar = () => {
+    const {login, setLogin} = useContext(SearchContext)
     const navigate = useNavigate()
     const scrollToSection = (sectionId) => {
         navigate(`/home/?${userId}`);
@@ -28,12 +31,20 @@ const Navbar = () => {
         </NavLink>
     );
 
+    const logout = ()=>{
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
+        localStorage.removeItem('user_id');
+        localStorage.removeItem('token_exp');
+        navigate("/");
+    }
+
     return (
         <section className="navbar">
             <img src={logo} alt="logo" className="logo" />
 
             <div className="nav-links">
-                <NavItem className="nav-link" to="">Home</NavItem>
+                <NavItem className="nav-link" to={`/home/${userId}`}>Home</NavItem>
                 <NavItem className="nav-link" to="#" onClick={() => scrollToSection('footer')}>Contact</NavItem>
                 <NavItem className="nav-link" to="#" onClick={() => scrollToSection('categories')}>Skills</NavItem>
                 {userId ? (
@@ -41,10 +52,11 @@ const Navbar = () => {
                 ) : ""}
             </div>
 
-            <div>
-                <button className="btn">Login</button>
+            {!token? <div><button onClick={()=>navigate("/register")} className="btn">Sign Up</button>
+                    <button className="btn-1" onClick={()=>navigate("/")}>Login</button></div>
+            : <button className="btn" onClick={logout}>Logout</button>
 
-            </div>
+            }
 
 
         </section>

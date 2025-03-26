@@ -6,8 +6,9 @@ export const SearchContext = createContext();
 export const SearchProvider = ({ children }) => {
     const [searchTerm, setSearchTerm] = useState("");
     const [showDashboard, setShowDashboard] = useState(false)
+    const [login, setLogin] = useState(false)
     const url = "http://127.0.0.1:8000/";
-    const [token, setToken] =useState("")
+    
 
 
 
@@ -17,7 +18,7 @@ export const SearchProvider = ({ children }) => {
     );
 
     return (
-        <SearchContext.Provider value={{token,setToken, searchTerm, showDashboard, setShowDashboard, setSearchTerm, filteredCourses, url }}>
+        <SearchContext.Provider value={{ login, setLogin, searchTerm, showDashboard, setShowDashboard, setSearchTerm, filteredCourses, url }}>
             {children}
         </SearchContext.Provider>
     );

@@ -1,10 +1,32 @@
 /* Categories Section */
 .categories {
+    display: flex;
+    flex-direction: column;
+    
+    padding: 40px;
+    background: linear-gradient(to right, #e6e9ec, #d4d1f1);
+    justify-items: center;
+  }
+  .extract{
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 15px;
+    padding: 5px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    transition: transform 0.3s ease-in-out;
+  }
+  .categories h1{
+    color: rgb(48, 48, 236);
+    font-size: 2rem;
+    margin: 32px auto;
+  }
+  .all-courses{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
     gap: 20px;
     padding: 40px;
-    background-color: #f8f9fa;
     justify-items: center;
   }
   
@@ -15,7 +37,7 @@
     align-items: center;
     background: white;
     border-radius: 10px;
-    padding: 10px;
+    padding: 7px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     width: 100%;

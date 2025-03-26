@@ -2,7 +2,7 @@
 .home{
     display: flex;
     align-items: center;
-    background-color: #e8eef5; /* Light blue background */
+    background: linear-gradient(140deg, #020d1a 40%, #1b55c9 30%); /* Light blue background */
     padding: 0 50px;
     max-height: fit-content;
     
@@ -23,6 +23,10 @@
     font-size: 3.5rem;
     font-weight: bold;
     margin-bottom: 20px;
+    color: white;
+  }
+  .left-section p {
+    color: white;
   }
   
   /* Search Bar */
@@ -50,7 +54,7 @@
   
   /* Search Button */
   .search {
-    background-color: #4f67f3; 
+    background-color: #f13f65; 
     color: white;
     border: none;
     padding: 10px 20px;

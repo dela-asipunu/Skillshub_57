@@ -6,6 +6,7 @@ import { useState } from 'react'
 import Signup from './components/SignUp/Signup'
 import Dashboard from './components/Dashboard/Dashboard'
 import Chat from './components/Chat/Chat'
+import CourseDetail from './components/Details/Details'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path='/register' element={<Signup/>}/>
           <Route path='/dashboard/:userId' element={<Dashboard/>}/>
           <Route path='/chat/:receiverId' element={<Chat/>} />
+          <Route path='/course/:id' element={<CourseDetail/>}/>
           
         </Routes>
       </div>

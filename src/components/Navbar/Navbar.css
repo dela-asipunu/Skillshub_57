@@ -2,9 +2,10 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  padding: 2rem 0;
+  padding: 2rem 2rem;
   align-items: center;
-  background-color: #1377e2;
+  background-color: #eff2f5;
+  max-width: 100%;
 }
 
 /* Logo styling */
@@ -22,7 +23,7 @@
 
 a {
   text-decoration: none;
-  color: white;
+  color: rgb(0, 0, 0);
   margin-left: 30px;
   font-size: 1.3rem;
 }
@@ -45,4 +46,20 @@ a:hover {
 
 .btn:hover {
   background-color: #0056b3;
+}
+
+.btn-1{
+  padding: 10px 20px;
+  border: none;
+  background-color: #09294d;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-left: 8px;
+}
+
+.btn-1:hover{
+  background-color: #3784dd;
 }

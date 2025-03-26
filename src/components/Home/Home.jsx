@@ -11,6 +11,7 @@ const Home = () => {
     const {userId} = useParams()
     const [userName, setUserName] = useState("")
     const {url, token} = useContext(SearchContext)
+    
 
     useEffect(() => {
         const fetchUserName = async () => {
@@ -27,9 +28,12 @@ const Home = () => {
             console.error('Error fetching user data:', error);
           }
         };
+
+        
     
         if (userId) {
           fetchUserName();
+          
         }
       }, [userId]);
 
