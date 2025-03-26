@@ -41,13 +41,17 @@
   /* First & Last Name - Flex Row */
   .div-1 {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     gap: 15px;
+  }
+  .last-page{
+    margin-bottom: 20px ;
   }
   
   /* Ensure first and last name inputs take equal space */
   .div-1 div {
-    width: 50%;
+    width: 100%;
   }
   textarea {
     width: 100%;

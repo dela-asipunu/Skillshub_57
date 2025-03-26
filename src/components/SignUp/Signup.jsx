@@ -12,11 +12,13 @@ const Signup = () => {
         first_name: "",
         last_name: "",
         email: "",
-        
+        bio:"",
+        location:"",
+        profile_profile: null,
         password: "",
         
     });
-
+    const userId = localStorage.getItem('user_id')
 
 
     const { url } = useContext(SearchContext);
@@ -36,10 +38,12 @@ const Signup = () => {
             setData({
               first_name: '',
               last_name: '',
+              location:'',
               email: '',
+              bio:'',
               password: '',
             });
-            navigate("/home")
+            navigate(`/home/${userId}`)
           }
         } catch (error) {
           console.log("Error occurred:", error?.response?.data || error);
@@ -117,7 +121,11 @@ const Signup = () => {
                     <span>Backend Development</span>
                 </label>
             </div>
+        </div>,
+        <div className="last-page">
+            <p>After Signing up, You have to login to confirm your registration. Click sign up to continue</p>
         </div>
+    
 
     ];
 
