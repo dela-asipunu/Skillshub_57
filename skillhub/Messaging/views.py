@@ -1,33 +1,47 @@
-from rest_framework import generics, permissions, status
-from rest_framework.response import Response
+from django.shortcuts import render
+from django.http import JsonResponse
+from django.contrib.auth import get_user_model
+User = get_user_model()
 from .models import Message
-from .serializers import MessageSerializer
-from django.db.models import Q
+from django.views.decorators.csrf import csrf_exempt
+import json
 
-class MessageListCreateView(generics.ListCreateAPIView):
-    serializer_class = MessageSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
-    def get_queryset(self):
-        user = self.request.user
-        receiver_id = self.request.query_params.get('receiver', None)
+def get_or_create_user(user_id):
+    user = User.objects.filter(id=user_id).first()
+    if not user:
+        # For testing, we create a dummy user
+        user = User.objects.create(username=f"user{user_id}", password="dummy")
+    return user
 
-        # Get messages between the user and the specified receiver (if provided)
-        if receiver_id:
-            return Message.objects.filter(
-                Q(sender=user, receiver_id=receiver_id) | 
-                Q(sender_id=receiver_id, receiver=user)
-            ).order_by('timestamp')
-        return Message.objects.filter(sender=user) | Message.objects.filter(receiver=user)
 
-    def perform_create(self, serializer):
-        serializer.save(sender=self.request.user)
+@csrf_exempt
+def send_message(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+            sender_id = data.get("sender_id")
+            receiver_id = data.get("receiver_id")
+            content = data.get("content")
 
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
+            sender = User.objects.filter(id=sender_id).first()
+            receiver = User.objects.filter(id=receiver_id).first()
+            
+            if not sender or not receiver:
+                return JsonResponse({
+                    "status": "error",
+                    "message": "Sender or receiver not found. Ensure both users exist."
+                }, status=404)
+
+            message = Message.objects.create(sender=sender, receiver=receiver, content=content)
+            return JsonResponse({"status": "success", "message_id": message.id}, status=201)
+        except Exception as e:
+            return JsonResponse({"status": "error", "message": str(e)}, status=400)
         
-        if serializer.is_valid():
-            self.perform_create(serializer)
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+def get_messages(request, user_id):
+    messages = Message.objects.filter(receiver_id=user_id).order_by("-timestamp")
+    messages_data = [
+        {"id": msg.id, "sender": msg.sender.username, "content": msg.content, "timestamp": msg.timestamp}
+        for msg in messages
+    ]
+    return JsonResponse({"messages": messages_data}, safe=False)

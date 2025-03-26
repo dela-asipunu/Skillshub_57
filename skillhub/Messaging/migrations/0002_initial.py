@@ -10,7 +10,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('Messaging', '0001_initial'),
+        ('messaging', '0001_initial'),
         ('skillMatching', '0001_initial'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]

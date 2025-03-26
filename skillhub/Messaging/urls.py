@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import MessageListCreateView
+from .views import send_message, get_messages
 
 urlpatterns = [
-    path('message/?receiver=<receiver>', MessageListCreateView.as_view(), name='message'),
+     path("send/", send_message, name="send_message"),
+     path("inbox/<int:user_id>/", get_messages, name="get_messages"),
 ]

@@ -42,9 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'userauth', 
     'community',
-    'Messaging',
+    'messaging',
     'skillMatching',
-    'learning',
     'notification',
     'course',
 
@@ -53,6 +52,15 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',    
 ]
+
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),  # 5 minutes for access token
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),     # 7 days for refresh token
+    'ROTATE_REFRESH_TOKENS': True,                   # Rotates refresh tokens
+    'BLACKLIST_AFTER_ROTATION': True,                # Blacklist old tokens
+}
 
 
 REST_FRAMEWORK={
